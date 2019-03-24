@@ -1,5 +1,5 @@
-public class LazyNumberDetails
-{
+public class LazyNumberDetails {
+
   private int number;
   private boolean isMagicAlreadyCalculated;
   private boolean isPerfectAlreadyCalculated;
@@ -26,7 +26,6 @@ public class LazyNumberDetails
   
   public boolean isPrime() {
     if (isPrimeAlreadyCalculated) {
-      System.out.println("cache");
       return PrimeResult;
     }
     return PrimeCalcul(number);
@@ -40,13 +39,11 @@ public class LazyNumberDetails
     
     for (int i = 2; i <= number / 2; i++) {
       if (number % i == 0) {
-        System.out.println("Computational");
         isPrimeAlreadyCalculated = true;
         return PrimeResult;
       }
     }
     
-    System.out.println("Computational");
     isPrimeAlreadyCalculated = true;
     PrimeResult = true;
     return PrimeResult;
@@ -54,7 +51,6 @@ public class LazyNumberDetails
   
   public boolean isPerfect() {
     if (isPerfectAlreadyCalculated) {
-      System.out.println("cache");
       return PerfectResult;
     }
     return PerfectAlg(number);
@@ -72,7 +68,6 @@ public class LazyNumberDetails
       isPerfectAlreadyCalculated = true;
       PerfectResult = true;
     }
-    System.out.println("Computational");
     isPerfectAlreadyCalculated = true;
     return PerfectResult;
   }
@@ -100,7 +95,6 @@ public class LazyNumberDetails
   public boolean isMagic()
   {
     if (isMagicAlreadyCalculated) {
-      System.out.println("cache");
       return MagicResult;
     }
     return MagicAlg(number);
@@ -111,7 +105,6 @@ public class LazyNumberDetails
       isPerfectAlreadyCalculated = true;
       MagicResult = true;
     }
-    System.out.println("Computational");
     isMagicAlreadyCalculated = true;
     return MagicResult;
   }
