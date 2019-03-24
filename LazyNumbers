@@ -1,0 +1,118 @@
+public class LazyNumberDetails
+{
+  private int number;
+  private boolean isMagicAlreadyCalculated;
+  private boolean isPerfectAlreadyCalculated;
+  private boolean isPrimeAlreadyCalculated;
+  private boolean PrimeResult;
+  private boolean PerfectResult;
+  private boolean MagicResult;
+  
+  public LazyNumberDetails() {}
+  
+  public LazyNumberDetails(int number) {
+    this.number = number;
+  }
+  
+  public void updateNumber(int number) {
+    this.number = number;
+    isPrimeAlreadyCalculated = false;
+    isPerfectAlreadyCalculated = false;
+    isMagicAlreadyCalculated = false;
+    PrimeResult = false;
+    PerfectResult = false;
+    MagicResult = false;
+  }
+  
+  public boolean isPrime() {
+    if (isPrimeAlreadyCalculated) {
+      System.out.println("cache");
+      return PrimeResult;
+    }
+    return PrimeCalcul(number);
+  }
+  
+  private boolean PrimeCalcul(int number) {
+    if (number < 2) {
+      isPrimeAlreadyCalculated = true;
+      return PrimeResult;
+    }
+    
+    for (int i = 2; i <= number / 2; i++) {
+      if (number % i == 0) {
+        System.out.println("Computational");
+        isPrimeAlreadyCalculated = true;
+        return PrimeResult;
+      }
+    }
+    
+    System.out.println("Computational");
+    isPrimeAlreadyCalculated = true;
+    PrimeResult = true;
+    return PrimeResult;
+  }
+  
+  public boolean isPerfect() {
+    if (isPerfectAlreadyCalculated) {
+      System.out.println("cache");
+      return PerfectResult;
+    }
+    return PerfectAlg(number);
+  }
+  
+  private boolean PerfectAlg(int number) {
+    int sum = 1;
+    
+    for (int i = 2; i < number; i++) {
+      if (number % i == 0) {
+        sum += i;
+      }
+    }
+    if (sum == number) {
+      isPerfectAlreadyCalculated = true;
+      PerfectResult = true;
+    }
+    System.out.println("Computational");
+    isPerfectAlreadyCalculated = true;
+    return PerfectResult;
+  }
+  
+  private static int reduce(int n) {
+    int sum = 0;
+    int sum2 = 0;
+    while (n != 0) {
+      int digit = n % 10;
+      sum += digit;
+      n /= 10;
+    }
+    
+    if (sum > 9) {
+      while (sum != 0) {
+        int digit = sum % 10;
+        sum2 += digit;
+        sum /= 10;
+      }
+      return sum2;
+    }
+    return sum;
+  }
+  
+  public boolean isMagic()
+  {
+    if (isMagicAlreadyCalculated) {
+      System.out.println("cache");
+      return MagicResult;
+    }
+    return MagicAlg(number);
+  }
+  
+  private boolean MagicAlg(int number) {
+    if ((reduce(number) == 3) || (reduce(number) == 7) || (reduce(number) == 9)) {
+      isPerfectAlreadyCalculated = true;
+      MagicResult = true;
+    }
+    System.out.println("Computational");
+    isMagicAlreadyCalculated = true;
+    return MagicResult;
+  }
+}
