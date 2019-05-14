@@ -1,0 +1,109 @@
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Scanner;
+public class GuestsList {
+
+	private int noOfSeats;
+	private int minCapacity;
+	private ArrayList<Guest> participants;
+	private ArrayList<Guest> waiting;
+
+
+	public  int getNoOfSeats() {
+		return noOfSeats;
+	}
+
+	public  void setNoOfSeats(int noOfSeats2) {
+		noOfSeats = noOfSeats2;
+		minCapacity = noOfSeats2;
+	}
+
+	public  ArrayList<Guest> getWaiting() {
+		return waiting;
+	}
+
+	public void setWaiting(ArrayList<Guest> waiting) {
+		this.waiting = waiting;
+	}
+
+	public  ArrayList<Guest> getParticipants() {
+		return participants;
+	}
+
+	public void setParticipants(ArrayList<Guest> participants) {
+		this.participants = participants;
+	}
+
+	public void add() {
+		if(size==array.length) {
+			array = Arrays.copyOf(array, size*2);
+		}
+		array[size]= element;
+		size++;
+		return true;
+	}
+	}
+	public  void remove() {
+		System.out.println("remove");
+	}
+	public  void update() {
+		System.out.println("update");
+	}
+	public  void guests() {
+	}
+	public  void waitlist() {
+		Guest g4 = new Guest();
+		for(int i=0;i<waiting.size();i++) {
+			g4 = participants.get(i);
+			System.out.println(g4 + " ");
+		}
+	}
+	public  void available() {
+		System.out.println("availabel");
+	}
+public void guests_no() {
+		System.out.println(participants.size());
+	}
+	public void waitlist_no() {
+		System.out.println(waiting.size());
+	}
+	
+	public  void subscribe_no() {
+		System.out.println("subs");
+	}
+	public  void quit() {
+		System.out.println("end");
+	}
+
+	public boolean search(String s) {
+		
+		for(int i=0;i<participants.size();i++) {
+			if(participants.get(i).search(s)) {
+				return true;
+			}
+		}
+		
+		for(int i=0;i<waiting.size();i++) {
+			if(waiting.get(i).search(s)){
+				return true;
+			}
+		}
+		return false;
+	}
+	
+	public  void help() {
+		System.out.println("help - Afiseaza aceasta lista de comenzi");
+		System.out.println("add - Adauga o noua persoana (inscriere)");
+		System.out.println("check - Verifica daca o persoana este inscrisa la eveniment");
+		System.out.println("remove - Sterge o persoana existenta din lista");
+		System.out.println("update - Actualizeaza detaliile unei persoane");
+		System.out.println("guests - Lista de persoane care participa la eveniment");
+		System.out.println("waitlist - Persoanele din lista de asteptare");
+		System.out.println("available - Numarul de locuri libere");
+		System.out.println("guests_no - Numarul de persoane care participa la eveniment");
+		System.out.println("waitlist_no - Numarul de persoane din lista de asteptare");
+		System.out.println("subscribe_no - Numarul total de persoane inscrise");
+		System.out.println("search - Cauta toti invitatii conform sirului de caractere introdus");
+		System.out.println("quit - Inchide aplicatia");
+	}
+}
