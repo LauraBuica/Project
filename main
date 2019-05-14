@@ -1,0 +1,125 @@
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Main {
+	
+		private ArrayList<Guest> participants;
+		private ArrayList<Guest> waiting;
+			
+	public void add() {
+		
+		System.out.println("Se adauga o noua persoana...");
+
+		System.out.println("Introduceti numele de familie:");
+		Scanner input = new Scanner(System.in);
+		String lastN = input.nextLine();
+
+		System.out.println("Introduceti prenumele:");
+		String firsrN = input.nextLine();
+
+		System.out.println("Introduceti emailul:");
+		String emaill = input.nextLine();
+
+		System.out.println("Introduceti numar de telefon (format „+40733386463“):");
+		String no = input.nextLine();
+
+		Guest guest = new Guest(lastN,firsrN,emaill,no);
+		
+		participants.add(0,guest);
+		}
+	
+	public static boolean check() {
+		System.out.println("Va rugam introduceti criteriul de cautare (1 - nume , 2 - email, 3 - numar de telefon): ");
+		Scanner input = new Scanner(System.in);
+		int number = input.nextInt();
+		
+		if(number == 1 || number == 2 || number == 3) {
+			
+			String s = input.nextLine();
+			for(int i=0;i<participants.size();i++) {
+				if(participants.get(i).search(s)) {
+					return true;
+				}
+			}
+			for(int i=0;i<waiting.size();i++) {
+				if(waiting.get(i).search(s)) {
+					return true;
+				}
+			}
+		} else {
+			System.out.println("nu ai introdus un numar valid");
+		}
+		return false;
+		
+	}
+	
+	public  void search() {
+		System.out.println("Se cauta o persoana...");
+		Scanner input = new Scanner(System.in);
+		String s = input.next();
+		
+		participants(s);
+	}
+	
+	public static void main(String[] args) {
+		Scanner s = new Scanner(System.in);
+		System.out.println("Bun venit! Introduceti numarul de locuri disponibile:");
+
+		int numberOfAvailableSeats = s.nextInt();
+			
+		ArrayList<Guest> participants = new ArrayList<Guest>(numberOfAvailableSeats);
+		
+			
+		while(true) {
+			System.out.print("Asteapta comanda: (help - Afiseaza lista de comenzi)");
+			String input = s.nextLine();
+
+			switch(input) {
+			case "help":
+				help();
+				break;
+			case "add":
+				add();
+				break;
+			case "check":
+				check();
+				break;
+			case "remove":
+				remove();
+				break;
+			case "update":
+				update();
+				break;
+			case "guests":
+				guests();
+				break;
+			case "waitlist":
+				available();
+				break;
+			case "available":
+				available();
+				break;
+			case "guests_no":
+			guests_no;
+				break;
+			case "waitlist_no":
+			waitlist_no();
+				break;
+			case "subscribe_no":
+			subscribe_no();
+				break;
+			case "search":
+				search();
+				break;
+			case "quit":
+				help();
+				break;
+			
+			}
+		}
+
+		
+		
+	}
+}
